@@ -1,0 +1,15 @@
+doctype
+html
+    head
+        meta(charset="utf-8")
+        title #{title}
+    body
+       form(action="/admin",method="post")
+           lable(for="inputSno") 学号
+               input#inputSno(type="text",name="student[sno]")
+           lable(for="inputName") 姓名
+               input#inputName(type="text",name="student[name]")
+           lable(for="inputAge") 年龄
+               input#inputAge(type="text",name="student[age]")
+           br
+           button(type="submit") 提交

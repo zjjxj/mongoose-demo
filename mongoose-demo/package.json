@@ -1,0 +1,14 @@
+{
+  "name": "mongoose-demo",
+  "version": "1.0.0",
+  "description": "mongoose,express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zhoujie",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.5.8"
+  }
+}
