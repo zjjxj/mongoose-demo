@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    Tag:<input id="inputTag" type="text">
+    <div id="tagArea"></div>
+    <textarea id="inputHobby"></textarea><br/>
+    <button id="hobbyBtn">确认兴趣爱好</button>
+    <div id="hobbyArea"></div>
+    <script>
+        (function () {
+            var $=function (el) {
+                return document.querySelector(el);
+            };
+            var contentHobby=$("#hobbyArea");
+            var contentTag=$("#tagArea");
+            var renderDataHobby=[];
+            var renderDataTag=[];
+            var queue={
+                updateData:function (str,renderData) {
+                    var pattern=/[\da-zA-Z\u4e00-\u9fa5]+/g;
+                    var data=str.match(pattern);
+                    data.map(function (dat) {
+                        renderData.push(dat);
+                    })
+                },
+                cutSame:function (renderData) {     //数组去重，返回新数组
+                    var obj={};
+                    var arr=[];
+                    renderData.map(function (data) {
+                        if(!obj[data]){
+                            obj[data]=1;
+                            arr.push(data);
+                        }
+                    })
+                    return arr;
+                },
+                limitNum:function (arr) {         //限制数组队列长度为10
+                    var overNum=arr.length-10;
+                    if(overNum>0){
+                        for(var i=0;i<overNum;i++){
+                            arr.shift();
+                        }
+                    }
+                    return arr;
+                },
+                render:function (arr,ele) {       //渲染
+                    var str="";
+                    arr.map(function (data) {
+                        str+="<div>"+data+"</div>"
+                    });
+                    ele.innerHTML = str;
+                }
+            };
+
+            //为hobby按钮绑定点击事件
+            $("#hobbyBtn").onclick=function () {
+                queue.updateData($("#inputHobby").value,renderDataHobby);
+                var renderArr=queue.limitNum(queue.cutSame(renderDataHobby));
+                queue.render(renderArr,contentHobby);
+            };
+
+            //为tagInput绑定keyUp事件
+            $("#inputTag").onkeyup=function (e) {
+                if(e.keyCode===13||e.keyCode===32||e.keyCode===188) {
+                    var newValue;
+                    e.keyCode===188?newValue=this.value.slice(0,this.value.length-1).trim():newValue=this.value.trim();
+                    renderDataTag.push(newValue);
+                    var renderArr=queue.cutSame(renderDataTag);
+                    queue.render(renderArr,contentTag);
+                    $("#inputTag").value="";
+                }
+            }
+        })()
+    </script>
+</body>
+</html>
