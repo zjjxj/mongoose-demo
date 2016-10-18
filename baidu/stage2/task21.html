@@ -3,14 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #hobbyArea span,#tagArea span{
+            width: 100px;
+            height: 100px;
+            border-radius:50px ;
+            display: inline-block;
+            margin: 20px 20px ;
+            line-height: 100px;
+            text-align: center;
+            background-color: bisque;
+        }
+    </style>
 </head>
 <body>
-    Tag:<input id="inputTag" type="text">
+    Tag:<input id="inputTag" type="text" placeholder="tag">
     <div id="tagArea"></div>
-    <textarea id="inputHobby"></textarea><br/>
+    <textarea id="inputHobby">唱歌 跳舞</textarea><br/>
     <button id="hobbyBtn">确认兴趣爱好</button>
     <div id="hobbyArea"></div>
     <script>
+        function addEvent(elem,event,listener) {
+            if(elem.addEventListener){
+                elem.addEventListener(event,listener,false);
+            }else if(elem.attachEvent){
+                elem.attachEvent("on"+event,listener);
+            }else{
+                elem["on"+event]=listener;
+            }
+        }
         (function () {
             var $=function (el) {
                 return document.querySelector(el);
@@ -50,21 +71,22 @@
                 render:function (arr,ele) {       //渲染
                     var str="";
                     arr.map(function (data) {
-                        str+="<div>"+data+"</div>"
+                        str+="<span>"+data+"</span>"
                     });
                     ele.innerHTML = str;
                 }
             };
 
             //为hobby按钮绑定点击事件
-            $("#hobbyBtn").onclick=function () {
+            addEvent( $("#hobbyBtn"),"click",function () {
                 queue.updateData($("#inputHobby").value,renderDataHobby);
                 var renderArr=queue.limitNum(queue.cutSame(renderDataHobby));
                 queue.render(renderArr,contentHobby);
-            };
+
+            });
 
             //为tagInput绑定keyUp事件
-            $("#inputTag").onkeyup=function (e) {
+            addEvent($("#inputTag"),"keyup",function (e) {
                 if(e.keyCode===13||e.keyCode===32||e.keyCode===188) {
                     var newValue;
                     e.keyCode===188?newValue=this.value.slice(0,this.value.length-1).trim():newValue=this.value.trim();
@@ -73,7 +95,43 @@
                     queue.render(renderArr,contentTag);
                     $("#inputTag").value="";
                 }
-            }
+
+            })
+
+            addEvent($("#hobbyArea"),"mouseover",function(e){
+                if(e.target.nodeName==="SPAN"){
+                    var value=e.target.innerHTML;
+                    e.target.innerHTML="删除："+value;
+                }
+            });
+            addEvent($("#tagArea"),"mouseover",function(e){
+                if(e.target.nodeName==="SPAN"){
+                    var value=e.target.innerHTML;
+                    e.target.innerHTML="删除："+value;
+                }
+            });
+            addEvent($("#hobbyArea"),"mouseout",function(e){
+                if(e.target.nodeName==="SPAN"){
+                    e.target.innerHTML=e.target.innerHTML.slice(3);
+                }
+            });
+            addEvent($("#tagArea"),"mouseout",function(e){
+                if(e.target.nodeName==="SPAN"){
+                    e.target.innerHTML=e.target.innerHTML.slice(3);
+                }
+            });
+            addEvent($("#hobbyArea"),"click",function(e){
+                if(e.target.nodeName==="SPAN"){
+                    $("#hobbyArea").removeChild(e.target);
+                }
+            });
+            addEvent($("#tagArea"),"click",function(e){
+                if(e.target.nodeName==="SPAN"){
+                    $("#tagArea").removeChild(e.target);
+                }
+            });
+
+
         })()
     </script>
 </body>
