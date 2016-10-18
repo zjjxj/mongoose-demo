@@ -127,16 +127,24 @@
             };
             $("#search").onclick=function () {
                 traverseDF($(".root"));
+                var arr1=nodeArray;
+                var arr=[];
                 nodeArray.forEach(function (data,index) {
                     if(data.childNodes[0].nodeValue.trim()==$("input").value){
-                        var arr=nodeArray.slice(0,index+1);
-                        nodeArray=[];
-                        changeColor(arr);
+                         arr=nodeArray.slice(0,index+1);
+                         nodeArray=[];
                     }
                 });
+               if(arr.length>0){
+                   changeColor(arr);
+               } else{
+                   changeColor(arr1);
+//                   alert("Not Find!");
+               }
+
             }
         })()
-       
+
     </script>
 </body>
 </html>
