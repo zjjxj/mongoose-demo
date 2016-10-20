@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #root{
+            width: 50%;
+
+            border: solid black 1px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        .child1{
+            width: 80%;
+            border: solid pink 1px;
+            padding: 20px;
+            margin: 0 auto;
+            display: none;
+
+        }
+        span{
+            display: inline-block;
+            background-color: yellow;
+            
+        }
+        .child2{
+            width: 80%;
+            border: solid grey 1px;
+            padding: 20px;
+            margin: 0 auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <span id="btn1">前端</span>
+        <div class="child1">
+            <span id="btn2">HTML</span>
+            <div class="child2">html4</div>
+            <div class="child2">html5</div>
+        </div>
+        <div class="child1">
+          <span>CSS</span>
+            <div class="child2">css2</div>
+            <div class="child2">css3</div>
+        </div>
+        <div class="child1">
+            <span>javascript</span>
+        </div>
+    </div>
+    <script>
+        var $=function (el) {
+            return document.querySelector(el)
+        };
+        function getChildren(node) {   //获取某根结点除第一个子节点外的子节点，返回一个节点数组
+            var nodeArr=[];
+            var children=node.children;
+            for(var i=1;i<children.length;i++){
+                nodeArr.push(children[i]);
+            }
+            return nodeArr;
+        }
+        function changeDisplay() {
+            var arr=getChildren(this.parentNode);
+            arr.map(function (node) {
+                if(node.style.display=="none"||node.style.display== ""){
+                    node.style.display="block";
+                }else{
+                    node.style.display="none";
+                }
+            })
+        }
+        var nodes=document.querySelectorAll("span");
+        for(var i=0;i<nodes.length;i++){
+            nodes[i].onclick=changeDisplay;
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/stage2/task24.html" line="25" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="93e13775-ce5f-4a05-8665-93b46cee6082" name="Default" comment="" />
     <ignored path="baidu.iws" />
@@ -20,15 +23,25 @@
     <favorites_list name="baidu" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="task24.html" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="task24.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stage2/task24.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+            <state relative-caret-position="-1064">
+              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding>
-                <marker date="1476879171448" expanded="true" signature="3658:3693" placeholder="..." />
+                <marker date="1476881345027" expanded="true" signature="3658:3693" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task25.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stage2/task25.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="499">
+              <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -36,7 +49,7 @@
       <file leaf-file-name="task23.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stage2/task23.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
+            <state relative-caret-position="2166">
               <caret line="114" column="37" selection-start-line="114" selection-start-column="37" selection-end-line="114" selection-end-column="37" />
               <folding />
             </state>
@@ -101,6 +114,7 @@
         <option value="$PROJECT_DIR$/stage2/task22.html" />
         <option value="$PROJECT_DIR$/stage2/task23.html" />
         <option value="$PROJECT_DIR$/stage2/task24.html" />
+        <option value="$PROJECT_DIR$/stage2/task25.html" />
       </list>
     </option>
   </component>
@@ -140,8 +154,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -166,6 +178,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -280,18 +294,21 @@
       <workItem from="1476594587917" duration="26514000" />
       <workItem from="1476683938035" duration="7338000" />
       <workItem from="1476780106307" duration="12573000" />
-      <workItem from="1476875379037" duration="4116000" />
+      <workItem from="1476875379037" duration="4884000" />
+      <workItem from="1476946715024" duration="370000" />
+      <workItem from="1476947497720" duration="104000" />
+      <workItem from="1476961082155" duration="7084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160422000" />
+    <option name="totallyTimeSpent" value="168748000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980783" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980783" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -322,18 +339,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/stage2/task17.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stage2/task18.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
@@ -578,7 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="996" column="0" selection-start-line="996" selection-start-column="0" selection-end-line="996" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -619,7 +628,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stage2/task23.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
+        <state relative-caret-position="2166">
           <caret line="114" column="37" selection-start-line="114" selection-start-column="37" selection-end-line="114" selection-end-column="37" />
           <folding />
         </state>
@@ -627,11 +636,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stage2/task24.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        <state relative-caret-position="-1064">
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
           <folding>
-            <marker date="1476879171448" expanded="true" signature="3658:3693" placeholder="..." />
+            <marker date="1476881345027" expanded="true" signature="3658:3693" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stage2/task25.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
