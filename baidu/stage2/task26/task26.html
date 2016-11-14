@@ -110,20 +110,41 @@
           var universe=document.querySelector("#universe");
           var site=[[265+"px",400+"px"],[265+"px",450+"px"],[265+"px",500+"px"],[265+"px",550+"px"]];//飞船起始位置
           var centerSiteX=300,centerSiteY=300;  //圆心位置
-          var created={}//已创建的飞船  {"1":{},"2":{},"3":{},"4":{}}
-           //定时器
+          var created={}    //已创建的飞船  {"1":{},"2":{},"3":{},"4":{}}
+          var timers=[[0,(1/2)*3.14],[0,(1/2)*3.14],[0,(1/2)*3.14],[0,(1/2)*3.14]];     //二维数组，存放定时器和起飞时的角度
 
-          function flyShip(name,state) {    //参数为飞船的编号和状态  编号同样也为飞船元素的id
+          //飞船类
+          function FlyShip(name,state) {    //参数为飞船的编号和状态  编号同样也为飞船元素的id
               this.name=name;
               this.state=state;
           }
-          flyShip.prototype={
+          FlyShip.prototype={
+              constructor:FlyShip,
               fly:function () {
-                  var timer=0;
-                  beginFly(this.name);
+                  if(this.state=="still"){
+                      this.state="flying";
+                      var num = parseInt(this.name);
+                      var x = parseInt(site[num - 1][0]);
+                      var y = parseInt(site[num - 1][1]);
+                      var radius = parseInt(site[num - 1][1])+10 - 300;
+                      var node = document.getElementById(this.name);
+
+                      timers[num-1][0]= setInterval(function () {   //拿不到更新的角度。。。。
+                          node.style.top = y+"px";
+                          node.style.left =x +"px";
+                          timers[num-1][1]=timers[num-1][1]+(40/(radius*radius));
+                          x=radius*Math.cos(timers[num-1][1])+300-25;
+                          y=radius*Math.sin(timers[num-1][1])+300-5;
+                      }, 1000);
+                  }
+                  console.log(timers[0][0])
               },
               stop:function () {
-                clearInterval(this.timer)
+                  if(this.state=="flying"){
+                      this.state="still";
+
+                      clearInterval(timers[parseInt(this.name)-1][0]);
+                  }
               },
               delete:function () {
                   var node=document.getElementById(this.name);
@@ -133,24 +154,6 @@
               freeEnergy:function () {
               }
           };
-          function beginFly(number,timer) {
-              var num = parseInt(number);
-              var initX = parseInt(site[num - 1][0]);
-              var initY = parseInt(site[num - 1][1]);
-              var radius = parseInt(site[num - 1][1])+10 - 300;
-              var y = initY;
-              var x = initX;
-              var d=(1/2)*3.14;
-              var node = document.getElementById(number);
-              this.timer= setInterval(function () {
-                      node.style.top = y+"px";
-                      node.style.left =x +"px";
-                      d=d+(40/(radius*radius));
-                      x=radius*Math.cos(d)+300-25;
-                      y=radius*Math.sin(d)+300-5;
-              }, 1)
-              return d;
-          }
 
           //指挥官 绑定点击事件
           document.querySelector("#commend").onclick=function (e) {
@@ -160,7 +163,7 @@
                   if(!created[number]){
                       var newShip = createShip(number);
                       universe.innerHTML += newShip;
-                      created[number]=new flyShip(number,"still");
+                      created[number]=new FlyShip(number,"still");
                   }
               }
               //销毁飞船

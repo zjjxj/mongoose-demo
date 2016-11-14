@@ -4,11 +4,13 @@ function student(name,age) {
 };
 student.prototype={
     add:function () {
-       return this.age+1;
+        this.age=this.age+5;
     }
 }
 
 var s1=new student("ll",12);
 var s2=new student("aa",10);
-console.log(s1.add());
-console.log(s2.add());
+s1.add();
+s2.add();
+console.log(s1.age);
+console.log(s2.age);
