@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task32</title>
+    <style>
+        fieldset{
+            width: 30%;
+            margin-bottom: 30px;
+        }
+        #result{
+            position: absolute;
+            width:60%;
+            top:0px;
+            right: 0px;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <fieldset>
+        <legend>名称</legend>
+        <input type="text" id="title"><br/>
+        <input type="radio" name="must" id="notMust">选填
+        <input type="radio" name="must" id="must">必填
+    </fieldset>
+    <fieldset>
+        <legend>表单类型</legend>
+        <input type="radio" name="chart" id="text">text
+        <input type="radio" name="chart" id="radio">radio
+        <input type="radio" name="chart" id="checkbox">checkbox
+        <input type="radio" name="chart" id="select">select
+    </fieldset>
+    <fieldset>
+        <legend>内容类型</legend>
+        <input type="radio" name="content" id="user">用户名
+        <input type="radio" name="content" id="password">密码
+        <input type="radio" name="content" id="tel">手机号
+        <input type="radio" name="content" id="email">邮箱
+    </fieldset>
+    <button>生成</button>
+    <div id="result">
+        <h1>展示区</h1>
+    </div>
+    <script>
+        $=function (el) {
+            return document.querySelector(el);
+        };
+        var myForm={}
+        var verify={
+            user:{rules:"必填，长度为4-16个字符",success:"用户名格式正确",fail:"用户名格式错误",empty:"用户名不得为空",verification:/[0-9a-zA-Z]{4,16}/},
+            password:{rules:"密码为6-12位数字",success:"密码格式正确",fail:"密码格式错误",empty:"秘密不得为空",verification:/[0-9]{6,12}/},
+            tel:{rules:"请输入11位手机号",success:"手机号格式正确",fail:"手机号格式是错误",empty:"手机号不得为空",verification:/[0-9]{11}/},
+            email:{rules:"请输入邮箱",success:"邮箱格式正确",fail:"邮箱格式错误",empty:"邮箱不得为空",verification:/[0-9a-zA-Z]+@[0-9a-z]{2,3}.com/}
+        };
+        function createForm(name,must,type,content) {   //type为表单类型 content为内容类型
+            this.name=name;
+            this.must=must;
+            this.type=type;
+            this.content=content;
+
+        };
+        createForm.prototype={
+            created:function () {
+                var newForm=document.createElement("form");
+                var newLabel=document.createElement("label");
+                var newChart=document.createElement("input");
+                var newDiv=document.createElement("div");
+
+                newChart.setAttribute("type",this.type);
+                newLabel.innerHTML=this.name;
+                newForm.appendChild(newLabel);
+                newForm.appendChild(newChart);
+                newForm.appendChild(newDiv);
+                $("#result").appendChild(newForm);
+                this.addEvent(newChart,newDiv);
+            },
+            addEvent:function (elem,remind) {
+                var that=this;
+                elem.onfocus=function () {
+                    remind.innerHTML=verify[that.content].rules;
+                    remind.style.color="";
+                    elem.style.borderColor="";
+                    elem.onblur=function () {
+                       if(elem.value!==""){
+                            if((verify[that.content].verification).test(elem.value)){
+                                remind.innerHTML=verify[that.content].success;
+                                remind.style.color="green";
+                                elem.style.borderColor="green"
+                            }else {
+                                remind.innerHTML=verify[that.content].fail;
+                                remind.style.color="red";
+                                elem.style.borderColor="red"
+                            }
+                       }else{
+                           if(that.must=="must"){
+                               remind.innerHTML=verify[that.content].empty;
+                               remind.style.color="red";
+                               elem.style.borderColor="red"
+                           }
+                       }
+                    }
+                };
+            }
+        }
+        $("button").onclick=function () {
+            var newType=0,newContent=0,newMust=0;
+            Array.prototype.map.call(document.getElementsByName("must"),function (data) {
+                if(data.checked===true){
+                    newMust=data.getAttribute("id");
+                }
+            });
+            Array.prototype.map.call(document.getElementsByName("chart"),function (data) {
+                if(data.checked===true){
+                    newType=data.getAttribute("id");
+                }
+            });
+            Array.prototype.map.call(document.getElementsByName("content"),function (data) {
+                if(data.checked===true){
+                    newContent=data.getAttribute("id");
+
+                }
+            });
+            var newElem=new createForm($("#title").value,newMust,newType,newContent);
+                newElem.created();
+        }
+
+    </script>
+</body>
+</html>
