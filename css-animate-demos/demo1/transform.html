@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transform</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 250px 250px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <button id="rotate">旋转至60度</button>
+    <button id="translate">向下移100左移100</button>
+    <button id="scale">横纵放大2倍</button>
+    <button id="skew">横向扭曲30纵向扭曲10</button>
+    <button id="matrix">矩阵</button>
+    <button id="translateAndScale">向下移100左移100并且横纵放大2倍</button>
+    <script>
+        var $=function (el) {
+            return document.querySelector(el);
+        }
+        $("#rotate").onclick=function () {
+            $("div").style.transform="rotate(60deg)" //参数负数为逆时针，正数为顺时针
+        };
+        $("#translate").onclick=function () {
+            $("div").style.transform="translate(100px,100px)"
+        };
+        $("#matrix").onclick=function () {
+            $("div").style.transform="matrix(1,1,-1,0,1,1)"
+        };
+        $("#scale").onclick=function () {
+            $("div").style.transform="scale(2,2)"  //参数大于1为放大，小于1为缩小
+        };
+        $("#skew").onclick=function () {
+            $("div").style.transform="skew(30deg,10deg)"//第一个参数是水平方向扭曲角度，第二个参数是垂直方向扭曲角度。
+        }
+        $("#translateAndScale").onclick=function () {
+            $("div").style.transform="translate(100px,100px) scale(2,2)";//多个transform之间用空格隔开；
+        }
+    </script>
+</body>
+</html>
